@@ -22,7 +22,7 @@ require 'db_conn.php';
         </form>
     </div>
     <?php
-
+    $todos = $conn->query("SELECT * FROM todos ORDER BY id DESC");
     ?>
     <div class="show=todo-section">
         <div class="todo_item">

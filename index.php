@@ -1,3 +1,6 @@
+<?php
+require 'db_conn.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,7 +9,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-Do List</title>
-    <link rel="stylesheet" href="css/">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="main-section">
@@ -18,6 +21,9 @@
             </button>
         </form>
     </div>
+    <?php
+
+    ?>
     <div class="show=todo-section">
         <div class="todo_item">
             <input type="checkbox">

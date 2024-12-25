@@ -43,10 +43,10 @@ require 'db_conn.php';
                 <div class="todo_item">
                     <span id="<?php echo  $todo['id']; ?>" class="remove-to-do">x</span>
                     <?php if ($todo['checked']){?>
-                        <input type="checkbox" class="check-box" checked>
+                        <input type="checkbox" data-todo-id = "<?php echo  $todo['id']; ?>" class="check-box" checked>
                         <h2 class="checked"><?php echo htmlspecialchars($todo['title']); ?></h2>
                         <?php } else {?>
-                        <input type="checkbox" class="check-box" >
+                        <input type="checkbox" data-todo-id = "<?php echo  $todo['id']; ?>" class="check-box" >
                         <h2><?php echo htmlspecialchars($todo['title']); ?></h2>
                         <?php } ?>
                     <small>Created: <?php echo htmlspecialchars($todo['date_time']); ?></small>
@@ -69,6 +69,21 @@ require 'db_conn.php';
             if(data){
                 $(this).parent().hide(600);
             }
+        });
+        $(".check-box").click(function(e){
+            const id = $(this).attr('data-todo-id');
+            $.post('app/check.php', {id: id},
+                (data) => {
+                if(data != 'error'){
+                    const h2 = $(this).next();
+                    if(data === '1'){
+                        h2.removeClass('checked');
+                    }else {
+                        h2.addClass('checked');
+                    }
+                }
+                }
+            )
         });
     });
 </script>

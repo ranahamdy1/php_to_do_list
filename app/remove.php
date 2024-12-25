@@ -3,10 +3,10 @@ if (isset($_POST['id'])) {
     require '../db_conn.php';
 
     $id = $_POST['id'];
-    if (empty(id)) {
+    if (empty($id)) {
         echo 0;
     }else{
-        $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+        $stmt = $conn->prepare("DELETE FROM todos WHERE id = ?");
         $res = $stmt->execute([$id]);
         if ($res) {
             echo 1;
